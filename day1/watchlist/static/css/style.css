@@ -17,6 +17,10 @@ footer{
     padding: 10px;
 }
 
+h2{
+    text-align: center;
+}
+
 /* 头像 */
 .avatar{
     width: 40px;

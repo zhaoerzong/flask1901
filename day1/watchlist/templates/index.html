@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ name }}的电影列表</title>
+    {# 标签页图片 #}
+    <link rel="icon" href="{{ url_for('static',filename='images/favicon.jpg')}}">
+    <title>{{ user.name }}的电影列表</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
 </head>
 <body>
     <h2>
         <img class='avatar' src="{{ url_for('static',filename='images/2.png') }}" alt="头像">
-        {{ name }}的电影列表
+        {{ user.name }}的电影列表
         
     </h2>
     {# length过滤器获取movies变量长度 #}
