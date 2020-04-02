@@ -42,6 +42,25 @@ class Movie(db.Model):
     year = db.Column(db.String(4))  #电影年份
 
 
+@app.cli.command()
+def forge():
+    db.create_all()
+    name = "聪"
+    movies = [
+        {'title':'功夫之王','year':'2010'},
+        {'title':'机器之血','year':'2015'},
+        {'title':'复仇者联盟3','year':'2017'},
+        {'title':'微微一笑很倾城','year':'2018'},
+        {'title':'百鸟朝凤','year':'2019'},
+        {'title':'唐人街探案3','year':'2020'},
+    ]
+    user = User(name=name)
+    db.session.add(user)
+    for m in movies:
+        movie = Movie(title=m['title'],year=m['year'])
+        db.session.add(movie)
+    db.session.commit()
+    click.echo('导入数据完成')
 
 
 #views
@@ -51,15 +70,7 @@ class Movie(db.Model):
 # @app.route('/home')
 
 def index():
-    # name = "大聪"
-    # movies = [
-    #     {'title':'杀破狼','year':'2010'},
-    #     {'title':'唐人街探案','year':'2015'},
-    #     {'title':'战狼2','year':'2017'},
-    #     {'title':'我不是药神','year':'2018'},
-    #     {'title':'复仇者联盟4','year':'2019'},
-    #     {'title':'大赢家','year':'2020'},
-    # ]
+
     user = User.query.first()   #读取用户记录
     movies = Movie.query.all()  #读取所有电影记录
     return render_template('index.html',user=user,movies=movies)
