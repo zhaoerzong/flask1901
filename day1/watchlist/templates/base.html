@@ -1,6 +1,7 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+    {% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -8,36 +9,28 @@
     <link rel="icon" href="{{ url_for('static',filename='images/favicon.jpg')}}">
     <title>{{ user.name }}的电影列表</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
+    {% endblock %}
 </head>
 <body>
     <h2>
         <img class='avatar' src="{{ url_for('static',filename='images/2.png') }}" alt="头像">
-        {{ user.name }}的电影列表
-        
-    </h2> -->
-{% extends 'base.html' %}
-
-{% block content %}
-{# length过滤器获取movies变量长度 #}
-<p>总共{{ movies|length }}部</p>
-<ul class="movie-list">
-    {% for movie in movies %}
-    <li>
-        {{ movie.title}} - {{ movie.year }}
-        <span class="float-right">
-            <a href="http://v.baidu.com/v?word={{ movie.title}}&ct=301989888&rn=67&pn=0&db=0&s=0&fbl=800&ie=utf-8" class='vbaidu' target="_blank" title='百度视频中搜素'>百度视频</a>
-        </span>
-    </li>
-    {% endfor %}
-</ul>
-{% endblock %}
-    <!-- <footer>
+        {{ user.name }}的电影列表  
+    </h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="{{ url_for('index')}}">主页</a>
+            </li>
+        </ul>
+    </nav>
+    {% block content %}{% endblock %}
+    <footer>
         <small>
                 &copy;2020<a href="#">
                     1901电影列表
                 </a>
         </small>
         
-    </footer> -->
-<!-- </body>
-</html> -->
+    </footer>
+</body>
+</html>
