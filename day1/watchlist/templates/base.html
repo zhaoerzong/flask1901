@@ -30,7 +30,7 @@
                 {% if current_user.is_authenticated %}
                 <a href="{{ url_for('login')}}">登录</a>
                 <a href="{{ url_for('logout')}}">退出</a>
-                <!-- <a href="{{ url_for('settings')}}">设置name</a> -->
+                <a href="{{ url_for('settings')}}">设置name</a>
                 {% else %}   
                 <a href="{{ url_for('login')}}">登录</a>
                 {% endif %}
