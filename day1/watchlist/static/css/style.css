@@ -63,6 +63,7 @@ nav li a{
     text-align: center;
     padding: 10px 12px;
     text-decoration: none;
+    float: left;
 }
 
 
@@ -84,6 +85,27 @@ nav li a:hover{
     padding: 5px 5px;
 }
 
+.btn{
+    font-size: 12px;
+    padding:3px 5px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: white;
+    color:black;
+    border:1px solid #555555;
+    border-radius: 5px;
+}
+
+
+.btn:hover{
+    text-decoration: none;
+    background-color: black;
+    color:white;
+    border:1px solid black;
+}
+
+
+
 .alert{
     position: relative;
     padding: 10px;
@@ -92,4 +114,5 @@ nav li a:hover{
     border-color: aqua;
     background: #F5c518;
     border-radius: 5px;
+    color:#004085;
 }
