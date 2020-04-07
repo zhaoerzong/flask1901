@@ -1,4 +1,4 @@
-from flask import redirect,render_template,flash,request
+from flask import redirect,render_template,flash,url_for,request
 
 from blog import db,app
 from blog.models import User,Movie
