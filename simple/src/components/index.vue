@@ -18,8 +18,8 @@
         <h2>最新消息</h2>
 
         <ul>
-          <li v-for="ne in productList.new.list">
-              <a v-bind:href="ne.url">{{ ne.title }}</a>
+          <li v-for="news in newsList">
+              <a v-bind:href="news.url">{{ news.title }}</a>
           </li>
         </ul>
       </div>
@@ -65,9 +65,23 @@
 
 
 <script>
+import axios from 'axios'
 export default {
+  mounted() {
+    axios.get("api/getNewsList")
+    .then((response) => {
+      // handle success
+      console.log(response);
+      this.newsList = response.data.list
+    })
+    .catch((error) => {
+      // handle error
+      console.log(error);
+    });
+  },
   data() {
     return {
+      newsList:[],
       productList: {
         pc: {
           title: "PC产品",
@@ -115,27 +129,27 @@ export default {
             }
           ]
         },
-        new:{
-            new:true,
-            list:[
-                {
-                    title:"武汉雷神山医院运行67天正式休舱",
-                    url:"http://fpx.com"
-                },
-                {
-                    title:"FPX新皮肤之铠甲勇士",
-                    url:"http://wuhan.com"
-                },
-                {
-                    title:"提笔你话西游，看你胖的像个球",
-                    url:"http://tibi.com"
-                },
-                {
-                    title:"我还是从前那个少年，只是有点胖",
-                    url:"http://shaonian.com"
-                },
-            ]
-        }
+        // new:{
+        //     new:true,
+        //     list:[
+        //         {
+        //             title:"武汉雷神山医院运行67天正式休舱",
+        //             url:"http://fpx.com"
+        //         },
+        //         {
+        //             title:"FPX新皮肤之铠甲勇士",
+        //             url:"http://wuhan.com"
+        //         },
+        //         {
+        //             title:"提笔你话西游，看你胖的像个球",
+        //             url:"http://tibi.com"
+        //         },
+        //         {
+        //             title:"我还是从前那个少年，只是有点胖",
+        //             url:"http://shaonian.com"
+        //         },
+        //     ]
+        // }
       }
     };
   }
